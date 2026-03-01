@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Care &amp; Safety — Ramesh Sharma</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --sky:#eaf3fc;--sky2:#f2eefb;--lavender:#e4ddf8;--lav-mid:#c4b8ee;
+  --lav-deep:#7c6abf;--lav-dark:#4b3d8f;--blue-soft:#daeaf9;
+  --blue-mid:#92bde8;--blue-deep:#3a78c9;--rose:#fce9e9;--rose-deep:#c94444;
+  --amber:#fef4e0;--amber-deep:#c47a18;--sage:#e2f5ee;--sage-deep:#2f9e72;
+  --white:#ffffff;--text:#252048;--text-mid:#4e4875;--text-soft:#9590b5;
+  --border:rgba(196,184,238,0.45);
+  --sh-sm:0 2px 12px rgba(90,70,160,0.08);
+  --sh-md:0 6px 28px rgba(90,70,160,0.13);
+  --sh-lg:0 16px 48px rgba(90,70,160,0.18);
+  --r-sm:12px;--r-md:18px;--r-lg:24px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{
+  font-family:'DM Sans',sans-serif;min-height:100vh;color:var(--text);
+  padding-bottom:90px;
+  background:
+    radial-gradient(ellipse 80% 60% at 10% 0%,rgba(196,184,238,0.35) 0%,transparent 60%),
+    radial-gradient(ellipse 60% 50% at 90% 100%,rgba(146,189,232,0.30) 0%,transparent 60%),
+    linear-gradient(160deg,var(--sky2) 0%,var(--sky) 100%);
+}
+
+/* HEADER */
+header{
+  background:rgba(255,255,255,0.72);backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);border-bottom:1.5px solid var(--border);
+  position:sticky;top:0;z-index:100;padding:0 clamp(18px,5vw,48px);
+  height:66px;display:flex;align-items:center;justify-content:space-between;gap:16px;
+}
+.brand{display:flex;align-items:center;gap:10px;cursor:pointer;}
+.brand-icon{
+  width:38px;height:38px;border-radius:11px;
+  background:linear-gradient(135deg,var(--lav-deep),var(--blue-deep));
+  display:flex;align-items:center;justify-content:center;font-size:1.05rem;flex-shrink:0;
+  box-shadow:0 3px 10px rgba(90,70,160,0.25);
+}
+.brand-name{font-family:'Fraunces',serif;font-size:1.15rem;font-weight:600;color:var(--text);line-height:1;}
+.brand-name span{color:var(--lav-deep);}
+.hdr-center{display:flex;flex-direction:column;align-items:center;gap:1px;}
+.hdr-welcome{font-size:0.9rem;font-weight:600;color:var(--text);white-space:nowrap;}
+.hdr-monitoring{font-size:0.75rem;color:var(--text-soft);font-weight:400;display:flex;align-items:center;gap:5px;white-space:nowrap;}
+.mon-dot{width:7px;height:7px;border-radius:50%;background:var(--sage-deep);animation:blink 2s ease-in-out infinite;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:0.3;}}
+.hdr-time{font-size:0.78rem;font-weight:600;color:var(--text-mid);}
+
+/* PAGES */
+.page{display:none;}.page.active{display:block;}
+.wrap{max-width:680px;margin:0 auto;padding:clamp(28px,5vw,52px) clamp(16px,5vw,24px) 32px;}
+
+/* SECTION TITLE */
+.sec{
+  font-family:'Fraunces',serif;font-size:1.05rem;font-weight:500;color:var(--text-mid);
+  margin-bottom:16px;padding-left:4px;display:flex;align-items:center;gap:8px;
+}
+.sec::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* GLASS CARD */
+.gc{
+  background:rgba(255,255,255,0.82);border:1.5px solid rgba(255,255,255,0.96);
+  border-radius:var(--r-lg);box-shadow:var(--sh-md);margin-bottom:20px;
+  position:relative;overflow:hidden;
+}
+.gcp{padding:24px 26px;}
+.gc-bar::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--lav-deep),var(--blue-deep));}
+
+/* PATIENT SUMMARY */
+.sum-inner{display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
+.pat-av{
+  width:68px;height:68px;border-radius:50%;flex-shrink:0;
+  background:linear-gradient(135deg,var(--lavender),var(--blue-soft));
+  border:3px solid var(--white);box-shadow:0 4px 16px rgba(90,70,160,0.15);
+  display:flex;align-items:center;justify-content:center;font-size:1.7rem;
+}
+.pat-name{font-family:'Fraunces',serif;font-size:1.3rem;font-weight:600;color:var(--text);}
+.pat-age{font-size:0.78rem;color:var(--text-soft);font-weight:500;background:var(--lavender);padding:3px 10px;border-radius:20px;margin-left:8px;}
+.pat-rel{font-size:0.82rem;color:var(--text-soft);margin:4px 0 10px;display:flex;align-items:center;gap:5px;}
+.st-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.st-badge{display:inline-flex;align-items:center;gap:6px;padding:5px 14px;border-radius:30px;font-size:0.78rem;font-weight:700;}
+.st-stable{background:var(--sage);color:var(--sage-deep);}
+.st-dot{width:7px;height:7px;border-radius:50%;background:currentColor;animation:blink 1.8s ease-in-out infinite;}
+.updated{font-size:0.75rem;color:var(--text-soft);display:flex;align-items:center;gap:5px;}
+
+/* CHIPS */
+.chips{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;}
+.chip{background:rgba(255,255,255,0.7);border:1.5px solid var(--border);border-radius:var(--r-sm);padding:14px 12px;text-align:center;}
+.chip-v{font-family:'Fraunces',serif;font-size:1.35rem;font-weight:600;color:var(--text);line-height:1;}
+.chip-l{font-size:0.65rem;font-weight:700;color:var(--text-soft);text-transform:uppercase;letter-spacing:0.07em;margin-top:5px;}
+
+/* MED ROW (dashboard) */
+.mrow{display:flex;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid var(--border);}
+.mrow:last-child{border-bottom:none;padding-bottom:0;}.mrow:first-child{padding-top:0;}
+.mdot{width:9px;height:9px;border-radius:50%;flex-shrink:0;}
+.mname{flex:1;font-size:0.97rem;font-weight:600;color:var(--text);}
+.mtime{font-size:0.8rem;color:var(--text-soft);font-weight:500;}
+.pill{font-size:0.68rem;font-weight:700;padding:4px 11px;border-radius:20px;letter-spacing:0.03em;white-space:nowrap;}
+.pg{background:var(--sage);color:var(--sage-deep);border:1px solid #a7f3d0;}
+.pa{background:var(--amber);color:var(--amber-deep);border:1px solid #fde68a;}
+
+/* SOS */
+.sos{
+  width:100%;padding:22px;
+  background:linear-gradient(135deg,var(--rose-deep),#e05030);
+  color:#fff;border:none;border-radius:var(--r-md);
+  font-family:'DM Sans',sans-serif;font-size:1.15rem;font-weight:700;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;gap:12px;
+  box-shadow:0 6px 24px rgba(200,60,60,0.35);
+  animation:sosp 2.5s ease-in-out infinite;margin-bottom:20px;
+}
+@keyframes sosp{0%,100%{box-shadow:0 6px 24px rgba(200,60,60,0.35);}50%{box-shadow:0 6px 40px rgba(200,60,60,0.65);}}
+
+/* QUICK NAV */
+.qnav{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.qbtn{
+  background:rgba(255,255,255,0.82);border:1.5px solid rgba(255,255,255,0.96);
+  border-radius:var(--r-lg);box-shadow:var(--sh-sm);padding:22px 18px;
+  display:flex;flex-direction:column;align-items:flex-start;gap:10px;
+  cursor:pointer;font-family:'DM Sans',sans-serif;
+  transition:transform 0.25s cubic-bezier(.22,.68,0,1.2),box-shadow 0.25s ease;
+}
+.qbtn:hover{transform:translateY(-5px);box-shadow:var(--sh-lg);}
+.qi{width:50px;height:50px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;}
+.qi-lav{background:linear-gradient(135deg,#edeafb,var(--blue-soft));}
+.qi-rose{background:linear-gradient(135deg,var(--rose),var(--amber));}
+.qi-sage{background:linear-gradient(135deg,var(--sage),var(--blue-soft));}
+.qi-amb{background:linear-gradient(135deg,var(--amber),var(--rose));}
+.ql{font-size:0.88rem;font-weight:700;color:var(--text-mid);}
+
+/* BUTTONS */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  font-family:'DM Sans',sans-serif;font-size:0.9rem;font-weight:700;
+  border:none;border-radius:var(--r-sm);padding:14px 22px;
+  cursor:pointer;width:100%;min-height:52px;transition:box-shadow 0.2s,transform 0.15s;
+}
+.btn:active{transform:scale(0.97);}
+.btn-lav{background:linear-gradient(135deg,var(--lav-deep),var(--blue-deep));color:#fff;}
+.btn-lav:hover{box-shadow:0 6px 20px rgba(90,70,160,0.4);}
+.btn-sage{background:linear-gradient(135deg,var(--sage-deep),#1a7a58);color:#fff;}
+.btn-ghost{background:rgba(255,255,255,0.8);border:1.5px solid var(--lav-mid);color:var(--text-mid);}
+.btn-sm{min-height:42px;padding:10px 16px;font-size:0.82rem;}
+
+/* PROFILE */
+.p-av{
+  width:72px;height:72px;border-radius:50%;
+  background:linear-gradient(135deg,var(--lavender),var(--blue-soft));
+  border:3px solid var(--white);box-shadow:0 4px 16px rgba(90,70,160,0.15);
+  display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 12px;
+}
+.p-nm{text-align:center;font-family:'Fraunces',serif;font-size:1.4rem;font-weight:600;color:var(--text);margin-bottom:2px;}
+.p-id{text-align:center;font-size:0.78rem;color:var(--text-soft);font-weight:500;margin-bottom:20px;}
+.irow{display:flex;align-items:flex-start;padding:13px 0;border-bottom:1px solid var(--border);gap:12px;}
+.irow:last-child{border-bottom:none;padding-bottom:0;}.irow:first-child{padding-top:0;}
+.iico{font-size:1.1rem;flex-shrink:0;width:26px;margin-top:1px;}
+.ilbl{font-size:0.68rem;font-weight:700;color:var(--text-soft);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:2px;}
+.ival{font-size:0.97rem;font-weight:600;color:var(--text);}
+.ctag{display:inline-block;font-size:0.72rem;font-weight:700;padding:3px 10px;border-radius:20px;margin:3px 3px 0 0;background:var(--rose);color:var(--rose-deep);border:1px solid #fecaca;}
+
+/* MED CARD */
+.mc{
+  background:rgba(255,255,255,0.82);border:1.5px solid rgba(255,255,255,0.96);
+  border-radius:var(--r-lg);box-shadow:var(--sh-sm);padding:18px 20px;margin-bottom:14px;transition:border-color 0.2s;
+}
+.mc.taken{border-color:#a7f3d0;background:rgba(230,252,243,0.8);}
+.mc-top{display:flex;align-items:flex-start;gap:14px;margin-bottom:14px;}
+.mico{font-size:2rem;flex-shrink:0;}
+.mn{font-size:1rem;font-weight:700;color:var(--text);}
+.md{font-size:0.8rem;color:var(--text-soft);font-weight:500;margin-top:3px;}
+.mt{display:inline-block;background:var(--amber);color:var(--amber-deep);border:1px solid #fde68a;font-size:0.72rem;font-weight:700;padding:4px 12px;border-radius:20px;margin-top:7px;}
+.mac{display:flex;gap:10px;}.mac .btn{flex:1;}
+.missed{background:var(--rose);border:1px solid #fecaca;border-radius:var(--r-sm);padding:13px 16px;display:flex;align-items:center;gap:10px;font-size:0.88rem;font-weight:600;color:var(--rose-deep);margin-bottom:16px;}
+
+/* HEALTH FORM */
+.field{margin-bottom:18px;}
+.field label{display:flex;align-items:center;gap:8px;font-size:0.78rem;font-weight:700;color:var(--text-mid);margin-bottom:8px;text-transform:uppercase;letter-spacing:0.07em;}
+.field input{width:100%;padding:15px 18px;font-size:1.15rem;font-family:'DM Sans',sans-serif;font-weight:600;border:1.5px solid var(--border);border-radius:var(--r-sm);background:rgba(255,255,255,0.7);color:var(--text);outline:none;transition:border-color 0.2s,background 0.2s;}
+.field input:focus{border-color:var(--lav-deep);background:#fff;}
+.field .hint{font-size:0.72rem;color:var(--text-soft);font-weight:500;margin-top:5px;}
+.sok{display:none;background:var(--sage);border:1px solid #a7f3d0;border-radius:var(--r-sm);padding:14px 18px;color:var(--sage-deep);font-weight:700;font-size:0.92rem;text-align:center;margin-top:14px;}
+
+/* TABLE */
+.rtbl{width:100%;border-collapse:collapse;font-size:0.88rem;}
+.rtbl thead tr{background:rgba(228,221,248,0.3);}
+.rtbl thead th{padding:11px 14px;text-align:left;font-size:0.64rem;text-transform:uppercase;letter-spacing:.1em;font-weight:700;color:var(--text-soft);border-bottom:1px solid var(--border);}
+.rtbl tbody tr{border-bottom:1px solid var(--border);}
+.rtbl tbody tr:last-child{border-bottom:none;}
+.rtbl tbody td{padding:13px 14px;font-weight:600;color:var(--text-mid);}
+.rtbl td:first-child{color:var(--text);}
+
+/* CHAT */
+.chdr{display:flex;align-items:center;gap:12px;padding-bottom:16px;border-bottom:1px solid var(--border);margin-bottom:16px;}
+.cav{width:46px;height:46px;border-radius:50%;flex-shrink:0;background:linear-gradient(135deg,var(--lavender),var(--blue-soft));border:2px solid var(--white);box-shadow:var(--sh-sm);display:flex;align-items:center;justify-content:center;font-size:1.3rem;}
+.can{font-size:0.97rem;font-weight:700;color:var(--text);}
+.cas{font-size:0.75rem;color:var(--sage-deep);font-weight:600;}
+.cwin{height:300px;overflow-y:auto;display:flex;flex-direction:column;gap:12px;margin-bottom:16px;}
+.cwin::-webkit-scrollbar{width:4px;}
+.cwin::-webkit-scrollbar-thumb{background:var(--border);border-radius:10px;}
+.msg{max-width:80%;padding:11px 15px;border-radius:14px;font-size:0.95rem;font-weight:500;line-height:1.5;}
+.msg.them{background:rgba(255,255,255,0.85);border:1.5px solid var(--border);color:var(--text);align-self:flex-start;border-bottom-left-radius:3px;}
+.msg.me{background:linear-gradient(135deg,var(--lav-deep),var(--blue-deep));color:#fff;align-self:flex-end;border-bottom-right-radius:3px;}
+.msnd{font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;opacity:0.55;margin-bottom:4px;}
+.mts{font-size:0.68rem;color:var(--text-soft);font-weight:500;margin-top:3px;}
+.mts.r{text-align:right;}
+.cinr{display:flex;gap:10px;align-items:center;}
+.cinr input{flex:1;padding:14px 18px;font-size:0.97rem;font-family:'DM Sans',sans-serif;font-weight:500;border:1.5px solid var(--border);border-radius:var(--r-sm);background:rgba(255,255,255,0.7);color:var(--text);outline:none;transition:border-color 0.2s;}
+.cinr input:focus{border-color:var(--lav-deep);background:#fff;}
+.sbtn{width:52px;height:52px;border-radius:var(--r-sm);border:none;background:linear-gradient(135deg,var(--lav-deep),var(--blue-deep));cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:#fff;flex-shrink:0;box-shadow:0 4px 14px rgba(90,70,160,0.35);transition:transform 0.15s;}
+.sbtn:active{transform:scale(0.92);}
+
+/* NAV */
+.bnav{position:fixed;bottom:0;left:0;right:0;background:rgba(255,255,255,0.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-top:1.5px solid var(--border);display:flex;justify-content:space-around;padding:10px 0 16px;z-index:200;box-shadow:0 -4px 20px rgba(90,70,160,0.08);}
+.nb{display:flex;flex-direction:column;align-items:center;gap:4px;background:none;border:none;color:var(--text-soft);font-family:'DM Sans',sans-serif;font-size:0.67rem;font-weight:600;cursor:pointer;padding:6px 14px;border-radius:var(--r-sm);transition:color 0.15s;text-transform:uppercase;letter-spacing:0.06em;}
+.nb .ni{font-size:1.35rem;line-height:1;}
+.nb.active{color:var(--lav-dark);}
+
+/* MODAL */
+.mbdp{display:none;position:fixed;inset:0;background:rgba(37,32,72,0.45);backdrop-filter:blur(4px);z-index:999;align-items:center;justify-content:center;}
+.mbdp.show{display:flex;}
+.modal{background:rgba(255,255,255,0.97);border-radius:var(--r-lg);padding:36px 30px;width:90%;max-width:320px;text-align:center;box-shadow:var(--sh-lg);animation:popIn 0.3s cubic-bezier(.22,.68,0,1.2) both;}
+@keyframes popIn{from{opacity:0;transform:scale(0.9);}to{opacity:1;transform:scale(1);}}
+.m-ico{font-size:3rem;margin-bottom:14px;}
+.m-ttl{font-family:'Fraunces',serif;font-size:1.3rem;font-weight:600;color:var(--text);margin-bottom:8px;}
+.m-msg{font-size:0.88rem;color:var(--text-soft);font-weight:500;margin-bottom:22px;line-height:1.55;}
+
+/* ANIMATIONS */
+@keyframes dot1{0%,80%,100%{opacity:0.2;transform:scale(0.8);}40%{opacity:1;transform:scale(1.2);}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+.ad{animation:slideDown 0.5s cubic-bezier(.22,.68,0,1.2) both;}
+.au{animation:fadeUp 0.5s cubic-bezier(.22,.68,0,1.2) both;}
+.d1{animation-delay:0.1s;}.d2{animation-delay:0.2s;}.d3{animation-delay:0.3s;}
+
+@media(max-width:540px){
+  .hdr-center{display:none;}
+  .chips{grid-template-columns:1fr 1fr;}
+  .sum-inner{flex-direction:column;text-align:center;gap:14px;}
+  .pat-rel{justify-content:center;}
+  .st-row{justify-content:center;}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="brand" onclick="showPage('home')">
+    <div class="brand-icon">🏥</div>
+    <span class="brand-name">Care &amp; <span>Safety</span></span>
+  </div>
+  <div class="hdr-center">
+    <div class="hdr-welcome">Hello, Ramesh Sharma 👋</div>
+
+  </div>
+  <div class="hdr-time" id="live-time"></div>
+</header>
+
+<!-- ═══ PAGE: HOME ═══ -->
+<div class="page active" id="page-home">
+<div class="wrap">
+
+  <!-- Patient card -->
+  <div class="gc gc-bar ad" style="margin-bottom:20px;">
+    <div class="gcp">
+      <div class="sum-inner">
+        <div class="pat-av">👴</div>
+        <div style="flex:1;min-width:160px;">
+          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:4px;">
+            <span class="pat-name">Ramesh Sharma</span>
+            <span class="pat-age">Age 74</span>
+          </div>
+          <div class="pat-rel">❤️ &nbsp;Your Father · Home Care</div>
+          <div class="st-row">
+            <span class="st-badge st-stable"><span class="st-dot"></span> Stable</span>
+            <span class="updated">🕐 Today, 10:34 AM</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Health chips -->
+  <div class="sec au d1">Today's Health</div>
+  <div class="chips au d1" style="margin-bottom:20px;">
+    <div class="chip"><div class="chip-v">128/84</div><div class="chip-l">Blood Pressure</div></div>
+    <div class="chip"><div class="chip-v">142</div><div class="chip-l">Sugar mg/dL</div></div>
+    <div class="chip"><div class="chip-v">78</div><div class="chip-l">Heart Rate</div></div>
+  </div>
+
+  <!-- Medicines -->
+  <div class="sec au d2">Today's Medicines</div>
+  <div class="gc au d2" style="margin-bottom:20px;">
+    <div class="gcp">
+      <div class="mrow"><div class="mdot" style="background:var(--sage-deep);"></div><div class="mname">Metformin 500mg</div><div class="mtime">8:00 AM</div><span class="pill pg">Done</span></div>
+      <div class="mrow"><div class="mdot" style="background:var(--amber-deep);"></div><div class="mname">Amlodipine 5mg</div><div class="mtime">1:00 PM</div><span class="pill pa">Pending</span></div>
+      <div class="mrow"><div class="mdot" style="background:var(--amber-deep);"></div><div class="mname">Atorvastatin 10mg</div><div class="mtime">9:00 PM</div><span class="pill pa">Pending</span></div>
+    </div>
+  </div>
+
+  <!-- SOS -->
+  <button class="sos au d3" onclick="triggerSOS()">🚨 &nbsp; EMERGENCY – CALL FOR HELP NOW</button>
+
+  <!-- Quick nav -->
+  <div class="sec au d3">Where would you like to go?</div>
+  <div class="qnav au d3">
+    <button class="qbtn" onclick="showPage('profile')"><div class="qi qi-lav">👤</div><div class="ql">My Profile</div></button>
+    <button class="qbtn" onclick="showPage('medication')"><div class="qi qi-rose">💊</div><div class="ql">Medicines</div></button>
+    <button class="qbtn" onclick="showPage('health')"><div class="qi qi-sage">🩺</div><div class="ql">Health</div></button>
+    <button class="qbtn" onclick="showPage('communication')"><div class="qi qi-amb">💬</div><div class="ql">Chat</div></button>
+  </div>
+
+</div>
+</div>
+
+<!-- ═══ PAGE: PROFILE ═══ -->
+<div class="page" id="page-profile">
+<div class="wrap">
+
+  <div class="gc gc-bar">
+    <div class="gcp">
+      <div class="p-av">👴</div>
+      <div class="p-nm">Ramesh Sharma</div>
+      <div class="p-id">Patient ID · #RS-74021 · Jaipur, Rajasthan</div>
+      <div class="irow"><div class="iico">🎂</div><div><div class="ilbl">Age</div><div class="ival">74 years (12 March 1951)</div></div></div>
+      <div class="irow"><div class="iico">🩸</div><div><div class="ilbl">Blood Group</div><div class="ival">B Positive (B+)</div></div></div>
+      <div class="irow"><div class="iico">📞</div><div><div class="ilbl">Mobile</div><div class="ival">+91 98765 43210</div></div></div>
+      <div class="irow"><div class="iico">🏠</div><div><div class="ilbl">Address</div><div class="ival">15, Shastri Nagar, Jaipur – 302 016</div></div></div>
+      <div class="irow">
+        <div class="iico">🏥</div>
+        <div>
+          <div class="ilbl">Conditions</div>
+          <div class="ival" style="margin-top:5px;">
+            <span class="ctag">Type 2 Diabetes</span>
+            <span class="ctag">High BP</span>
+            <span class="ctag">Knee Pain</span>
+          </div>
+        </div>
+      </div>
+      <div class="irow"><div class="iico">🩺</div><div><div class="ilbl">Doctor</div><div class="ival">Dr. Anil Gupta – Fortis, Jaipur</div></div></div>
+    </div>
+  </div>
+
+  <div class="sec" style="margin-top:4px;">Caregiver</div>
+  <div class="gc gc-bar">
+    <div class="gcp">
+      <div class="irow" style="padding-top:0;"><div class="iico">👩</div><div><div class="ilbl">Name</div><div class="ival">Priya Sharma (Daughter)</div></div></div>
+      <div class="irow"><div class="iico">📱</div><div><div class="ilbl">Mobile</div><div class="ival">+91 97654 32109</div></div></div>
+      <div class="irow"><div class="iico">📧</div><div><div class="ilbl">Email</div><div class="ival"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="4636342f3f2768352e27342b2706212b272f2a6825292b">[email&#160;protected]</a></div></div></div>
+    </div>
+  </div>
+
+  <button class="btn btn-lav" onclick="showModal('✏️','Edit Profile','Profile editing coming soon.')">✏️ &nbsp; Edit Profile</button>
+
+</div>
+</div>
+
+<!-- ═══ PAGE: MEDICATION ═══ -->
+<div class="page" id="page-medication">
+<div class="wrap">
+
+  <div class="missed">⚠️ &nbsp; Missed: <strong>Vitamin D3</strong> – yesterday morning's dose was not taken</div>
+
+  <div class="mc taken">
+    <div class="mc-top"><div class="mico">💊</div><div><div class="mn">Metformin 500mg</div><div class="md">1 tablet · With food · For Diabetes</div><div class="mt">⏰ 8:00 AM</div></div></div>
+    <div class="mac"><button class="btn btn-sage btn-sm" disabled>✅ Taken at 8:10 AM</button></div>
+  </div>
+
+  <div class="mc" id="med-2">
+    <div class="mc-top"><div class="mico">💊</div><div><div class="mn">Amlodipine 5mg</div><div class="md">1 tablet · After meals · For Blood Pressure</div><div class="mt">⏰ 1:00 PM</div></div></div>
+    <div class="mac">
+      <button class="btn btn-lav btn-sm" onclick="markTaken('med-2')">💊 Mark Taken</button>
+      <button class="btn btn-ghost btn-sm" onclick="showModal('⏰','Reminder Set','You will be reminded again in 30 minutes.')">⏰ Later</button>
+    </div>
+  </div>
+
+  <div class="mc" id="med-3">
+    <div class="mc-top"><div class="mico">💊</div><div><div class="mn">Atorvastatin 10mg</div><div class="md">1 tablet · Before sleep · For Cholesterol</div><div class="mt">⏰ 9:00 PM</div></div></div>
+    <div class="mac">
+      <button class="btn btn-lav btn-sm" onclick="markTaken('med-3')">💊 Mark Taken</button>
+      <button class="btn btn-ghost btn-sm" onclick="showModal('⏰','Reminder Set','You will be reminded again in 30 minutes.')">⏰ Later</button>
+    </div>
+  </div>
+
+  <div class="mc" id="med-4">
+    <div class="mc-top"><div class="mico">🌿</div><div><div class="mn">Vitamin D3 60,000 IU</div><div class="md">1 capsule · Once a week · For Bone Health</div><div class="mt">⏰ Sunday Morning</div></div></div>
+    <div class="mac">
+      <button class="btn btn-lav btn-sm" onclick="markTaken('med-4')">💊 Mark Taken</button>
+      <button class="btn btn-ghost btn-sm" onclick="showModal('⏰','Reminder Set','You will be reminded again in 30 minutes.')">⏰ Later</button>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- ═══ PAGE: HEALTH ═══ -->
+<div class="page" id="page-health">
+<div class="wrap">
+
+  <div class="gc gc-bar">
+    <div class="gcp">
+      <div class="sec" style="margin-top:0;padding-left:0;">Log Today's Readings</div>
+      <div class="field">
+        <label>🩺 Blood Pressure</label>
+        <input type="text" id="bp" placeholder="e.g. 128/84"/>
+        <div class="hint">Normal: 90–140 / 60–90 mmHg</div>
+      </div>
+      <div class="field">
+        <label>🍬 Blood Sugar</label>
+        <input type="number" id="sugar" placeholder="e.g. 142"/>
+        <div class="hint">Fasting normal: 70–100 mg/dL</div>
+      </div>
+      <div class="field">
+        <label>💓 Heart Rate</label>
+        <input type="number" id="hr" placeholder="e.g. 78"/>
+        <div class="hint">Normal: 60–100 beats/min</div>
+      </div>
+      <button class="btn btn-lav" onclick="submitHealth()">📤 &nbsp; Submit Readings</button>
+      <div class="sok" id="health-ok">✅ Readings saved. Priya has been notified.</div>
+    </div>
+  </div>
+
+  <div class="sec">Last 3 Readings</div>
+  <div class="gc">
+    <div class="gcp" style="padding:0;">
+      <table class="rtbl">
+        <thead><tr><th>Date</th><th style="text-align:center;">BP</th><th style="text-align:center;">Sugar</th><th style="text-align:center;">HR</th></tr></thead>
+        <tbody>
+          <tr><td>27 Feb</td><td style="text-align:center;">126/82</td><td style="text-align:center;">138</td><td style="text-align:center;">76</td></tr>
+          <tr><td>26 Feb</td><td style="text-align:center;">130/86</td><td style="text-align:center;">155</td><td style="text-align:center;">80</td></tr>
+          <tr><td>25 Feb</td><td style="text-align:center;">124/80</td><td style="text-align:center;">146</td><td style="text-align:center;">74</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- ═══ PAGE: COMMUNICATION ═══ -->
+<div class="page" id="page-communication">
+<div class="wrap">
+
+  <div class="gc gc-bar">
+    <div class="gcp">
+
+      <!-- AI Bot header -->
+      <div class="chdr">
+        <div class="cav" style="background:linear-gradient(135deg,var(--lav-deep),var(--blue-deep));font-size:1.1rem;">🤖</div>
+        <div>
+          <div class="can">CareBot – AI Health Assistant</div>
+          <div class="cas">● Always available · Powered by AI</div>
+        </div>
+      </div>
+
+      <!-- Chat window -->
+      <div class="cwin" id="chat-window">
+        <div>
+          <div class="msg them">
+            <div class="msnd">CareBot</div>
+            Hello Ramesh ji! 👋 I'm your AI health assistant. I can help you with medicine reminders, health tips, or just have a conversation. How are you feeling today?
+          </div>
+          <div class="mts">Just now</div>
+        </div>
+      </div>
+
+      <!-- Typing indicator (hidden by default) -->
+      <div id="typing-indicator" style="display:none; align-items:center; gap:8px; margin-bottom:12px; padding-left:4px;">
+        <div style="display:flex;gap:4px;align-items:center;">
+          <span style="width:8px;height:8px;border-radius:50%;background:var(--lav-deep);animation:dot1 1.2s infinite;display:inline-block;"></span>
+          <span style="width:8px;height:8px;border-radius:50%;background:var(--lav-deep);animation:dot1 1.2s 0.2s infinite;display:inline-block;"></span>
+          <span style="width:8px;height:8px;border-radius:50%;background:var(--lav-deep);animation:dot1 1.2s 0.4s infinite;display:inline-block;"></span>
+        </div>
+        <span style="font-size:0.78rem;color:var(--text-soft);font-weight:500;">CareBot is thinking…</span>
+      </div>
+
+      <!-- Input -->
+      <div class="cinr">
+        <input type="text" id="chat-input" placeholder="Ask me anything…" onkeydown="if(event.key==='Enter') sendMessage()"/>
+        <button class="sbtn" id="send-btn" onclick="sendMessage()">➤</button>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- BOTTOM NAV -->
+<nav class="bnav">
+  <button class="nb active" id="nav-home"          onclick="showPage('home')">          <span class="ni">🏠</span> Home    </button>
+  <button class="nb"         id="nav-profile"       onclick="showPage('profile')">       <span class="ni">👤</span> Profile </button>
+  <button class="nb"         id="nav-medication"    onclick="showPage('medication')">    <span class="ni">💊</span> Meds    </button>
+  <button class="nb"         id="nav-health"        onclick="showPage('health')">        <span class="ni">🩺</span> Health  </button>
+  <button class="nb"         id="nav-communication" onclick="showPage('communication')"> <span class="ni">💬</span> Chat    </button>
+</nav>
+
+<!-- MODAL -->
+<div class="mbdp" id="modal-bd" onclick="closeModal()">
+  <div class="modal" onclick="event.stopPropagation()">
+    <div class="m-ico" id="m-ico"></div>
+    <div class="m-ttl" id="m-ttl"></div>
+    <div class="m-msg" id="m-msg"></div>
+    <button class="btn btn-lav" onclick="closeModal()">OK, Got It</button>
+  </div>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nb').forEach(b=>b.classList.remove('active'));
+  document.getElementById('page-'+id).classList.add('active');
+  var nb=document.getElementById('nav-'+id);
+  if(nb)nb.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function showModal(ico,ttl,msg){
+  document.getElementById('m-ico').textContent=ico;
+  document.getElementById('m-ttl').textContent=ttl;
+  document.getElementById('m-msg').textContent=msg;
+  document.getElementById('modal-bd').classList.add('show');
+}
+function closeModal(){document.getElementById('modal-bd').classList.remove('show');}
+function triggerSOS(){showModal('🚨','Emergency Alert Sent!','Priya Sharma has been notified immediately. Help is on the way. Please stay calm.');}
+function markTaken(id){
+  document.getElementById(id).classList.add('taken');
+  document.getElementById(id).querySelector('.mac').innerHTML='<button class="btn btn-sage btn-sm" disabled>✅ Marked as Taken – Priya notified</button>';
+  showModal('✅','Recorded','Well done! Priya Sharma has been notified.');
+}
+function submitHealth(){
+  var bp=document.getElementById('bp').value.trim();
+  var sg=document.getElementById('sugar').value.trim();
+  var hr=document.getElementById('hr').value.trim();
+  if(!bp||!sg||!hr){showModal('⚠️','Missing Fields','Please fill in all three readings before submitting.');return;}
+  document.getElementById('health-ok').style.display='block';
+  showModal('📊','Readings Saved','BP: '+bp+' · Sugar: '+sg+' mg/dL · HR: '+hr+' bpm. Priya has been notified.');
+}
+// Conversation history for multi-turn AI context
+var chatHistory = [];
+
+async function sendMessage(){
+  var inp = document.getElementById('chat-input');
+  var win = document.getElementById('chat-window');
+  var txt = inp.value.trim();
+  if(!txt) return;
+
+  var t = new Date().toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'});
+
+  // Append user bubble
+  var userDiv = document.createElement('div');
+  userDiv.innerHTML = '<div class="msg me">'+txt+'</div><div class="mts r">'+t+'</div>';
+  win.appendChild(userDiv);
+  win.scrollTop = win.scrollHeight;
+  inp.value = '';
+
+  // Disable input, show typing indicator
+  inp.disabled = true;
+  document.getElementById('send-btn').disabled = true;
+  document.getElementById('typing-indicator').style.display = 'flex';
+  win.scrollTop = win.scrollHeight;
+
+  // Add to history
+  chatHistory.push({ role: 'user', content: txt });
+
+  try {
+    var response = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        system: 'You are CareBot, a warm and caring AI health assistant for Ramesh Sharma, a 74-year-old man from Jaipur, Rajasthan, India. He has Type 2 Diabetes, High Blood Pressure, and Knee Pain. His medicines are Metformin 500mg (8 AM), Amlodipine 5mg (1 PM), and Atorvastatin 10mg (9 PM). His caregiver and daughter is Priya Sharma. Speak in simple, friendly, and reassuring English. Keep responses short (2-4 sentences). You can help with medicine reminders, health tips, emotional support, and general questions. Never give specific medical diagnoses or replace professional medical advice. Always encourage him to consult Dr. Anil Gupta at Fortis Jaipur for serious concerns.',
+        messages: chatHistory
+      })
+    });
+
+    var data = await response.json();
+    var reply = (data.content && data.content[0]) ? data.content[0].text : 'I am sorry, I could not respond right now. Please try again.';
+
+    // Add bot reply to history
+    chatHistory.push({ role: 'assistant', content: reply });
+
+    var t2 = new Date().toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'});
+    var botDiv = document.createElement('div');
+    botDiv.innerHTML = '<div class="msg them"><div class="msnd">CareBot</div>'+reply+'</div><div class="mts">'+t2+'</div>';
+    document.getElementById('typing-indicator').style.display = 'none';
+    win.appendChild(botDiv);
+    win.scrollTop = win.scrollHeight;
+
+  } catch(err) {
+    document.getElementById('typing-indicator').style.display = 'none';
+    var t3 = new Date().toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'});
+    var errDiv = document.createElement('div');
+    errDiv.innerHTML = '<div class="msg them"><div class="msnd">CareBot</div>Sorry, I am having trouble connecting right now. Please try again in a moment.</div><div class="mts">'+t3+'</div>';
+    win.appendChild(errDiv);
+    win.scrollTop = win.scrollHeight;
+  }
+
+  // Re-enable input
+  inp.disabled = false;
+  document.getElementById('send-btn').disabled = false;
+  inp.focus();
+}
+
+function tick(){document.getElementById('live-time').textContent=new Date().toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'});}
+setInterval(tick,1000);tick();
+</script>
+</body>
+</html>
